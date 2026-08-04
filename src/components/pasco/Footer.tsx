@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 const FOOTER_LINKS = {
@@ -5,7 +7,6 @@ const FOOTER_LINKS = {
     { label: 'Our Story', href: '/our-story' },
     { label: 'Our Brands', href: '/our-brands' },
     { label: 'Foodservice', href: '/foodservice' },
-    { label: 'News', href: '/news' },
     { label: 'Contact', href: '/contact' },
   ],
   products: [
@@ -16,16 +17,14 @@ const FOOTER_LINKS = {
     { label: 'Condiments', href: '/products/condiments' },
   ],
   recipes: [
-    { label: 'Hyderabadi Biryani', href: '/recipes/hyderabadi-biryani' },
-    { label: 'Methi Chicken', href: '/recipes/methi-chicken' },
-    { label: 'Lamb Bhuna Gosht', href: '/recipes/lamb-bhuna-gosht' },
+    { label: 'Hyderabadi Biryani', href: '/recipes' },
+    { label: 'Methi Chicken', href: '/recipes' },
+    { label: 'Lamb Bhuna Gosht', href: '/recipes' },
     { label: 'All Recipes', href: '/recipes' },
   ],
   support: [
-    { label: 'Delivery Information', href: '/delivery' },
-    { label: 'Returns Policy', href: '/returns' },
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms & Conditions', href: '/terms' },
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'Foodservice', href: '/foodservice' },
   ],
 };
 
@@ -189,12 +188,12 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Pasco Foods Ltd. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-xs text-[#6B6B6B] hover:text-[#9C9690] transition-colors">
+            <button onClick={() => alert('Privacy Policy page coming soon.')} className="text-xs text-[#6B6B6B] hover:text-[#9C9690] transition-colors">
               Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-xs text-[#6B6B6B] hover:text-[#9C9690] transition-colors">
+            </button>
+            <button onClick={() => alert('Terms & Conditions page coming soon.')} className="text-xs text-[#6B6B6B] hover:text-[#9C9690] transition-colors">
               Terms &amp; Conditions
-            </Link>
+            </button>
           </div>
         </div>
       </div>

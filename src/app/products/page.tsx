@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/pasco/PageLayout';
 import FadeUp from '@/components/pasco/FadeUp';
@@ -28,13 +27,13 @@ export default function ProductsPage() {
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B88A3B]">Our Range</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold text-[#1A1A1A]">Products</h1>
             <p className="mt-4 text-[#6B6B6B] max-w-xl mx-auto leading-relaxed">
-              Explore our complete range of authentic Indian cooking products, all made in the UK with natural ingredients and free from artificial additives.
+              Explore our complete range of authentic Indian cooking products, all made in the UK with natural ingredients and free from artificial additives. From cooking sauces and pastes to pickles, chutneys, and condiments.
             </p>
           </FadeUp>
         </div>
       </section>
 
-      {/* Filters */}
+      {/* Category Filters */}
       <section className="bg-white border-b border-[#E5E2DB] sticky top-16 lg:top-[72px] z-30">
         <div className="container-pasco">
           <div className="flex gap-2 overflow-x-auto py-4 no-scrollbar">
@@ -55,16 +54,31 @@ export default function ProductsPage() {
         </div>
       </section>
 
+      {/* Special Offer Banner */}
+      <section className="bg-[#214E34]">
+        <div className="container-pasco py-4">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <span className="bg-[#B88A3B] text-white text-xs font-bold px-3 py-1 rounded">SPECIAL OFFER</span>
+              <span className="text-white text-sm font-medium">10 for £10 — Mix & Match across our range</span>
+            </div>
+            <Link href="#products-grid" className="text-[#B88A3B] hover:text-white text-sm font-semibold transition-colors">
+              Shop Now →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Product Grid */}
-      <section className="section-spacing bg-white">
+      <section id="products-grid" className="section-spacing bg-white">
         <div className="container-pasco">
           <p className="text-sm text-[#6B6B6B] mb-6">Showing {filtered.length} product{filtered.length !== 1 ? 's' : ''}</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filtered.map((product, i) => (
               <FadeUp key={product.id} delay={i * 50}>
                 <div className="group">
-                  <div className="img-zoom aspect-square relative rounded-xl overflow-hidden bg-[#F8F5EF]">
-                    <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="img-zoom aspect-square rounded-xl overflow-hidden bg-[#F8F5EF]">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="mt-4">
                     <p className="text-xs text-[#B88A3B] font-medium uppercase tracking-wider">{product.category}</p>
@@ -83,7 +97,7 @@ export default function ProductsPage() {
                             : 'border border-[#E5E2DB] text-[#1A1A1A] hover:border-[#214E34] hover:text-[#214E34]'
                         }`}
                       >
-                        {addedToCart === product.id ? 'Added' : 'Add to Cart'}
+                        {addedToCart === product.id ? '✓ Added' : 'Add to Cart'}
                       </button>
                     </div>
                     <div className="mt-2 flex flex-wrap gap-1.5">
@@ -94,6 +108,40 @@ export default function ProductsPage() {
                       ))}
                     </div>
                   </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bundles CTA */}
+      <section className="bg-[#F8F5EF] section-spacing">
+        <div className="container-pasco text-center">
+          <FadeUp>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B88A3B]">Save More</span>
+            <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-[#1A1A1A]">Product Bundles</h2>
+            <p className="mt-4 text-[#6B6B6B] max-w-lg mx-auto leading-relaxed">
+              Try our curated bundles — perfect for tasting a range of flavours or stocking up on your favourites at a special price.
+            </p>
+          </FadeUp>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              { name: 'Curry in a Hurry', desc: 'Mild Cooking Sauce Taster Bundle', price: '£10.00' },
+              { name: 'BBQ Bundle', desc: 'Tandoori & Kebab Paste Pack', price: '£12.00' },
+              { name: 'Tickle the Pickle', desc: 'The Perfect Curry Accompaniments', price: '£10.00' },
+            ].map((bundle, i) => (
+              <FadeUp key={bundle.name} delay={i * 100}>
+                <div className="bg-white rounded-xl p-8 text-center hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow duration-300">
+                  <h3 className="text-lg font-semibold text-[#1A1A1A]">{bundle.name}</h3>
+                  <p className="mt-2 text-sm text-[#6B6B6B]">{bundle.desc}</p>
+                  <p className="mt-4 text-xl font-semibold text-[#9C3A28]">{bundle.price}</p>
+                  <button
+                    onClick={() => { window.dispatchEvent(new CustomEvent('pasco:cart-add')); alert(`${bundle.name} bundle added to cart!`); }}
+                    className="mt-4 h-10 px-6 bg-[#214E34] hover:bg-[#1a3f2a] text-white text-sm font-semibold rounded-lg transition-colors"
+                  >
+                    Shop Now
+                  </button>
                 </div>
               </FadeUp>
             ))}

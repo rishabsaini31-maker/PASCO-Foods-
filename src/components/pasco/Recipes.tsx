@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import FadeUp from './FadeUp';
@@ -76,7 +78,7 @@ export default function Recipes() {
                     </span>
                   </div>
                   <Link
-                    href={recipe.href}
+                    href="/recipes"
                     className="mt-4 inline-flex items-center text-sm font-semibold text-[#214E34] hover:text-[#9C3A28] transition-colors"
                   >
                     View Recipe

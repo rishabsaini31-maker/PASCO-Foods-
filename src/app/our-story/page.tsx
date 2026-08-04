@@ -1,8 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/pasco/PageLayout';
 import FadeUp from '@/components/pasco/FadeUp';
-import { TIMELINE } from '@/lib/constants';
 
 const FULL_TIMELINE = [
   { year: '1990', title: 'A Family Kitchen', description: 'Our story began in a small family kitchen in Wigan, Lancashire. With a passion for authentic Indian cooking and a desire to share the flavours we grew up with, we created four curry pastes and began supplying them to our local curry house. Word spread quickly, and soon we were delivering to restaurants across the North West of England.' },
@@ -17,8 +15,7 @@ const FULL_TIMELINE = [
 
 export default function OurStoryPage() {
   return (
-    <PageLayout breadcrumbs={[{ label: 'Our Story' }]}>
-      {/* Hero */}
+    <PageLayout breadcrumbs={[{ label: 'Our Story' }]}>      {/* Hero */}
       <section className="bg-[#F8F5EF] section-spacing">
         <div className="container-pasco">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -26,12 +23,15 @@ export default function OurStoryPage() {
               <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B88A3B]">Heritage</span>
               <h1 className="mt-3 text-4xl md:text-5xl font-semibold text-[#1A1A1A]">Our Story</h1>
               <p className="mt-6 text-[#6B6B6B] leading-relaxed">
-                What began as a family passion project in 1990 has grown into one of the UK&apos;s most trusted names in authentic Indian food products. This is our journey.
+                What began as a family passion project in 1990 has grown into one of the UK&apos;s most trusted names in authentic Indian food products. This is our journey from a small kitchen in Wigan to the shelves of homes and restaurants across Britain.
+              </p>
+              <p className="mt-4 text-[#6B6B6B] leading-relaxed">
+                Three decades later, we remain a proud family business, still making our products in Wigan, still using natural ingredients, and still staying true to the authentic flavours that started it all.
               </p>
             </FadeUp>
             <FadeUp delay={200}>
               <div className="img-zoom rounded-xl overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=700&h=600&fit=crop&q=80" alt="Spice farm in India" width={700} height={600} className="w-full h-auto object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=700&h=600&fit=crop&q=80" alt="Spice farm in India" className="w-full h-auto object-cover" loading="lazy" />
               </div>
             </FadeUp>
           </div>
@@ -43,7 +43,8 @@ export default function OurStoryPage() {
         <div className="container-pasco max-w-3xl">
           <FadeUp>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A]">The Journey</h2>
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B88A3B]">Milestones</span>
+              <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-[#1A1A1A]">The Journey</h2>
             </div>
           </FadeUp>
           <div>
@@ -79,9 +80,9 @@ export default function OurStoryPage() {
           </FadeUp>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
-              { title: 'Authenticity', text: 'Every recipe is rooted in tradition. We stay true to the flavours and techniques passed down through generations of our family.' },
-              { title: 'Natural Quality', text: 'We never compromise on ingredients. No additives, no preservatives, no shortcuts — just pure, natural flavours in every jar.' },
-              { title: 'Family First', text: 'We treat every customer like family. From our kitchen to yours, we put care and passion into everything we make.' },
+              { title: 'Authenticity', text: 'Every recipe is rooted in tradition. We stay true to the flavours and techniques passed down through generations of our family, bringing genuine Indian taste to every jar.' },
+              { title: 'Natural Quality', text: 'We never compromise on ingredients. No additives, no preservatives, no shortcuts — just pure, natural flavours in every product. Our sauces are gluten free and made with the finest spices.' },
+              { title: 'Family First', text: 'We treat every customer like family. From our kitchen to yours, we put care and passion into everything we make. We are proud to be a third-generation family business.' },
             ].map((v, i) => (
               <FadeUp key={v.title} delay={i * 100}>
                 <div className="bg-white rounded-xl p-8 text-center">

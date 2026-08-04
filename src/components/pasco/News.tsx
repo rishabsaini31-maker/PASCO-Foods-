@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import FadeUp from './FadeUp';
@@ -23,10 +25,10 @@ export default function News() {
           </FadeUp>
           <FadeUp delay={100}>
             <Link
-              href="/news"
+              href="/our-story"
               className="shrink-0 text-sm font-semibold text-[#214E34] hover:text-[#9C3A28] transition-colors inline-flex items-center gap-1"
             >
-              View All News
+              Our Story
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
@@ -55,15 +57,15 @@ export default function News() {
                   <p className="mt-2 text-sm text-[#6B6B6B] leading-relaxed line-clamp-2">
                     {item.excerpt}
                   </p>
-                  <Link
-                    href={item.href}
+                  <button
+                    onClick={() => alert(`Full article for "${item.title}" coming soon.`)}
                     className="mt-3 inline-flex items-center text-sm font-semibold text-[#214E34] hover:text-[#9C3A28] transition-colors"
                   >
                     Read More
                     <svg className="ml-1 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                     </svg>
-                  </Link>
+                  </button>
                 </div>
               </article>
             </FadeUp>

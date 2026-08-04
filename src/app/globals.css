@@ -153,6 +153,15 @@
   background: #9C3A28;
 }
 
+/* Hide scrollbar for filter bars */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Container width */
 .container-pasco {
   max-width: 1320px;

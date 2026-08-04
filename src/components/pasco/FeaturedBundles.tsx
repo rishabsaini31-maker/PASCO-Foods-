@@ -1,5 +1,6 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
 import FadeUp from './FadeUp';
 import { BUNDLES } from '@/lib/constants';
 
@@ -48,12 +49,12 @@ export default function FeaturedBundles() {
                     <span className="text-xl font-semibold text-[#9C3A28]">
                       {bundle.price}
                     </span>
-                    <Link
-                      href={bundle.href}
+                    <button
+                      onClick={() => { window.dispatchEvent(new CustomEvent('pasco:cart-add')); alert(`${bundle.title} bundle added to cart!`); }}
                       className="inline-flex items-center justify-center h-10 px-5 bg-[#214E34] hover:bg-[#1a3f2a] text-white text-xs font-semibold rounded-lg transition-colors tracking-wide"
                     >
                       Shop Now
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/pasco/PageLayout';
 import FadeUp from '@/components/pasco/FadeUp';
@@ -13,15 +12,14 @@ export default function RecipesPage() {
   const filtered = active === 'All' ? ALL_RECIPES : ALL_RECIPES.filter(r => r.category === active);
 
   return (
-    <PageLayout breadcrumbs={[{ label: 'Recipes' }]}>
-      {/* Hero */}
+    <PageLayout breadcrumbs={[{ label: 'Recipes' }]}>      {/* Hero */}
       <section className="bg-[#F8F5EF] section-spacing">
         <div className="container-pasco text-center">
           <FadeUp>
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B88A3B]">From Our Kitchen</span>
             <h1 className="mt-3 text-4xl md:text-5xl font-semibold text-[#1A1A1A]">Recipes</h1>
             <p className="mt-4 text-[#6B6B6B] max-w-xl mx-auto leading-relaxed">
-              Discover delicious recipes using Pasco products. From quick weeknight meals to weekend feasts, bring authentic Indian flavours to your table.
+              Discover delicious recipes using Pasco products. From quick weeknight meals to weekend feasts, bring authentic Indian flavours to your table with our easy-to-follow recipes.
             </p>
           </FadeUp>
         </div>
@@ -55,8 +53,8 @@ export default function RecipesPage() {
             {filtered.map((recipe, i) => (
               <FadeUp key={recipe.id} delay={i * 80}>
                 <article className="group bg-white border border-[#E5E2DB] rounded-xl overflow-hidden hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow duration-300">
-                  <div className="img-zoom aspect-[4/3] relative">
-                    <Image src={recipe.image} alt={recipe.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  <div className="img-zoom aspect-[4/3]">
+                    <img src={recipe.image} alt={recipe.title} className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="p-6">
                     <span className="text-xs font-medium text-[#B88A3B] uppercase tracking-wider">{recipe.category}</span>
@@ -78,20 +76,38 @@ export default function RecipesPage() {
                         {recipe.difficulty}
                       </span>
                     </div>
-                    <Link
-                      href={recipe.href}
+                    <button
+                      onClick={() => alert(`Full recipe for "${recipe.title}" coming soon.`)}
                       className="mt-4 inline-flex items-center text-sm font-semibold text-[#214E34] hover:text-[#9C3A28] transition-colors"
                     >
                       View Recipe
                       <svg className="ml-1 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
-                    </Link>
+                    </button>
                   </div>
                 </article>
               </FadeUp>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-[#214E34]">
+        <div className="container-pasco py-16 md:py-20 text-center">
+          <FadeUp>
+            <h2 className="text-2xl md:text-3xl font-semibold text-white">Have a Recipe to Share?</h2>
+            <p className="mt-3 text-sm text-[#D4CFC5] max-w-lg mx-auto">We love seeing how you use Pasco products in your kitchen. Share your creations with us on social media.</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <a href="https://www.instagram.com/pascofoods/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-12 px-8 bg-[#B88A3B] hover:bg-[#a07a30] text-white text-sm font-semibold rounded-lg transition-colors">
+                Follow Us on Instagram
+              </a>
+              <Link href="/products" className="inline-flex items-center justify-center h-12 px-8 border-2 border-white hover:bg-white hover:text-[#214E34] text-white text-sm font-semibold rounded-lg transition-colors">
+                Shop Products
+              </Link>
+            </div>
+          </FadeUp>
         </div>
       </section>
     </PageLayout>
