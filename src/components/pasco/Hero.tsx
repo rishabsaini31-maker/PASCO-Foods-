@@ -1,13 +1,21 @@
+'use client';
+
 import Link from 'next/link';
+import { useState, useRef } from 'react';
 import FadeUp from './FadeUp';
 
 export default function Hero() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoReady = () => setVideoLoaded(true);
+
   return (
     <section className="section-spacing bg-white" aria-label="Hero">
       <div className="container-pasco">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
-          <div>
+          <div className="lg:col-span-2">
             <FadeUp>
               <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#B88A3B] mb-4">
                 Established 1990
@@ -42,17 +50,29 @@ export default function Hero() {
           </div>
 
           {/* Right Video */}
-          <FadeUp delay={200}>
-            <div className="relative img-zoom rounded-xl overflow-hidden">
+          <FadeUp delay={200} className="lg:col-span-3">
+            <div className="relative img-zoom rounded-xl overflow-hidden bg-[#F8F5EF]">
               <video
+                ref={videoRef}
                 src="/advertising.mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="w-full h-auto object-cover"
+                preload="auto"
+                onCanPlay={handleVideoReady}
+                onPlaying={handleVideoReady}
+                className={`w-full h-auto object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
                 aria-label="Premium Indian spices and ingredients arranged beautifully"
               />
+              {!videoLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center bg-[#F8F5EF]">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-4 border-[#E5E2DB] border-t-[#214E34] rounded-full animate-spin" />
+                    <p className="text-sm text-[#6B6B6B] font-medium">Loading video...</p>
+                  </div>
+                </div>
+              )}
             </div>
           </FadeUp>
         </div>

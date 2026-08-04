@@ -5,16 +5,26 @@ import Link from 'next/link';
 import PageLayout from '@/components/pasco/PageLayout';
 import FadeUp from '@/components/pasco/FadeUp';
 import { ALL_PRODUCTS, PRODUCT_CATEGORIES } from '@/lib/data';
+import { useCart } from '@/context/CartContext';
+import type { CatalogueProduct } from '@/types';
 
 export default function ProductsPage() {
   const [active, setActive] = useState('All');
   const [addedToCart, setAddedToCart] = useState<number | null>(null);
+  const { addToCart } = useCart();
 
   const filtered = active === 'All' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(p => p.category === active);
 
-  const handleAddToCart = (id: number) => {
-    setAddedToCart(id);
-    window.dispatchEvent(new CustomEvent('pasco:cart-add'));
+  const handleAddToCart = (product: CatalogueProduct) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      image: product.image,
+      weight: product.weight,
+    });
+    setAddedToCart(product.id);
     setTimeout(() => setAddedToCart(null), 2000);
   };
 
@@ -90,7 +100,7 @@ export default function ProductsPage() {
                         <span className="text-xs text-[#6B6B6B] ml-1.5">{product.weight}</span>
                       </div>
                       <button
-                        onClick={() => handleAddToCart(product.id)}
+                        onClick={() => handleAddToCart(product)}
                         className={`h-9 px-4 text-xs font-semibold rounded-lg transition-all ${
                           addedToCart === product.id
                             ? 'bg-[#214E34] text-white'
@@ -127,20 +137,31 @@ export default function ProductsPage() {
           </FadeUp>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
-              { name: 'Curry in a Hurry', desc: 'Mild Cooking Sauce Taster Bundle', price: '£10.00' },
-              { name: 'BBQ Bundle', desc: 'Tandoori & Kebab Paste Pack', price: '£12.00' },
-              { name: 'Tickle the Pickle', desc: 'The Perfect Curry Accompaniments', price: '£10.00' },
+              { name: 'Curry in a Hurry', desc: 'Mild Cooking Sauce Taster Bundle', price: '£10.00', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=400&fit=crop&q=80' },
+              { name: 'BBQ Bundle', desc: 'Tandoori & Kebab Paste Pack', price: '£12.00', image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=400&fit=crop&q=80' },
+              { name: 'Tickle the Pickle', desc: 'The Perfect Curry Accompaniments', price: '£10.00', image: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=400&h=400&fit=crop&q=80' },
             ].map((bundle, i) => (
               <FadeUp key={bundle.name} delay={i * 100}>
                 <div className="bg-white rounded-xl p-8 text-center hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow duration-300">
+                  <div className="w-24 h-24 mx-auto rounded-xl overflow-hidden bg-[#F8F5EF] mb-4">
+                    <img src={bundle.image} alt={bundle.name} className="w-full h-full object-cover" />
+                  </div>
                   <h3 className="text-lg font-semibold text-[#1A1A1A]">{bundle.name}</h3>
                   <p className="mt-2 text-sm text-[#6B6B6B]">{bundle.desc}</p>
                   <p className="mt-4 text-xl font-semibold text-[#9C3A28]">{bundle.price}</p>
                   <button
-                    onClick={() => { window.dispatchEvent(new CustomEvent('pasco:cart-add')); alert(`${bundle.name} bundle added to cart!`); }}
+                    onClick={() => {
+                      addToCart({
+                        id: `bundle-${i}`,
+                        name: bundle.name,
+                        category: bundle.desc,
+                        price: bundle.price,
+                        image: bundle.image,
+                      });
+                    }}
                     className="mt-4 h-10 px-6 bg-[#214E34] hover:bg-[#1a3f2a] text-white text-sm font-semibold rounded-lg transition-colors"
                   >
-                    Shop Now
+                    Add to Cart
                   </button>
                 </div>
               </FadeUp>

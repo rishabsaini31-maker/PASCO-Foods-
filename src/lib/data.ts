@@ -1,14 +1,11 @@
-/* ─── Full Product Catalogue sourced from pascofoods.co.uk ─── */
+import type { CatalogueProduct, Recipe, Brand } from '@/types';
 
-export const ALL_PRODUCTS = [
-  // ── Cooking Sauces ──
+export const ALL_PRODUCTS: CatalogueProduct[] = [
   { id: 1, name: 'Goanese Vindaloo', category: 'Cooking Sauces', price: '£2.49', weight: '350g', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=400&fit=crop&q=80', description: 'A fiery and tangy curry sauce inspired by the vibrant flavours of Goa, blending roasted spices with vinegar and garlic.', tags: ['Hot', 'Vegan', 'Gluten-Free'] },
   { id: 2, name: 'Rajastani Jalfrezi', category: 'Cooking Sauces', price: '£2.49', weight: '350g', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=400&fit=crop&q=80', description: 'A colourful, stir-fry style curry sauce from the royal kitchens of Rajasthan, packed with capsicum, onions, and aromatic spices.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
   { id: 3, name: 'Punjabi Butter Chicken', category: 'Cooking Sauces', price: '£2.49', weight: '350g', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=400&fit=crop&q=80', description: 'A rich, creamy tomato-based sauce with butter and aromatic spices, recreating the iconic taste of Punjab.', tags: ['Mild', 'Gluten-Free'] },
   { id: 4, name: 'Navratan Korma', category: 'Cooking Sauces', price: '£2.49', weight: '350g', image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=400&fit=crop&q=80', description: 'A mild, creamy curry sauce with a delicate blend of nine gems — mixed vegetables, fruits, and nuts.', tags: ['Mild', 'Vegetarian', 'Gluten-Free'] },
   { id: 5, name: 'Delhi Tikka Masala', category: 'Cooking Sauces', price: '£2.49', weight: '350g', image: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=400&h=400&fit=crop&q=80', description: 'A smooth, spiced tomato-cream sauce inspired by the bustling streets of Delhi.', tags: ['Medium', 'Gluten-Free'] },
-
-  // ── Cooking Pastes ──
   { id: 6, name: 'Tandoori Marinade Paste', category: 'Cooking Pastes', price: '£2.29', weight: '200g', image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=400&h=400&fit=crop&q=80', description: 'A vibrant red marinade paste with traditional tandoori spices, ideal for grilling and barbecuing.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
   { id: 7, name: 'Kashmiri Masala Paste', category: 'Cooking Pastes', price: '£2.29', weight: '200g', image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=400&fit=crop&q=80', description: 'A fragrant, mildly spiced paste inspired by the rich culinary heritage of Kashmir.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
   { id: 8, name: 'Tikka Marinade Paste', category: 'Cooking Pastes', price: '£2.29', weight: '200g', image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=400&h=400&fit=crop&q=80', description: 'A classic yoghurt-based marinade paste with garlic, ginger, and aromatic spices for perfect tikka.', tags: ['Medium', 'Gluten-Free'] },
@@ -24,8 +21,6 @@ export const ALL_PRODUCTS = [
   { id: 18, name: 'Green Masala Paste', category: 'Cooking Pastes', price: '£2.29', weight: '200g', image: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=400&h=400&fit=crop&q=80', description: 'A fresh, herbaceous paste made with green chillies, coriander, and mint for vibrant green curries.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
   { id: 19, name: 'Vindaloo Curry Paste', category: 'Cooking Pastes', price: '£2.29', weight: '200g', image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=400&h=400&fit=crop&q=80', description: 'A pungent, tangy paste with a fiery kick of chilli and the sharpness of vinegar, true to Goan tradition.', tags: ['Hot', 'Vegan', 'Gluten-Free'] },
   { id: 20, name: 'Tikka Masala Paste', category: 'Cooking Pastes', price: '£2.29', weight: '200g', image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=400&fit=crop&q=80', description: 'A versatile paste that delivers the signature creamy, spiced tikka masala flavour.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
-
-  // ── Pickles ──
   { id: 21, name: 'Mango Pickle (Hot)', category: 'Pickles', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=400&fit=crop&q=80', description: 'A fiery mango pickle made with raw mango pieces in a spicy oil base with chilli, fenugreek, and mustard seeds.', tags: ['Hot', 'Vegan', 'Gluten-Free'] },
   { id: 22, name: 'Mango Pickle (Mild)', category: 'Pickles', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=400&h=400&fit=crop&q=80', description: 'A milder version of the classic mango pickle, retaining all the authentic flavour with a gentler heat.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
   { id: 23, name: 'Lime Pickle (Hot)', category: 'Pickles', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=400&fit=crop&q=80', description: 'A tangy, spicy lime pickle with fresh lime pieces preserved in oil with red chilli and aromatic spices.', tags: ['Hot', 'Vegan', 'Gluten-Free'] },
@@ -34,23 +29,19 @@ export const ALL_PRODUCTS = [
   { id: 26, name: 'Garlic and Chilli Pickle', category: 'Pickles', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=400&fit=crop&q=80', description: 'A pungent combination of garlic cloves and green chillies in a spiced oil.', tags: ['Hot', 'Vegan', 'Gluten-Free'] },
   { id: 27, name: 'Garlic Pickle', category: 'Pickles', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=400&h=400&fit=crop&q=80', description: 'Whole garlic cloves preserved in a carefully spiced oil with mustard and fenugreek seeds.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
   { id: 28, name: 'Mixed Pickle', category: 'Pickles', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=400&h=400&fit=crop&q=80', description: 'A traditional Indian mixed pickle combining mango, lime, carrot, and cauliflower in a spiced oil base.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
-
-  // ── Chutneys ──
   { id: 29, name: 'Hot Mango Chutney', category: 'Chutneys', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&q=80', description: 'A spiced mango chutney with a warming kick of chilli, made from selected fruits for authentic homemade flavour.', tags: ['Medium', 'Vegan', 'Gluten-Free'] },
   { id: 30, name: 'Sweet Mango Chutney', category: 'Chutneys', price: '£2.29', weight: '300g', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=400&fit=crop&q=80', description: 'A lusciously sweet mango chutney made with ripe mangoes, perfect as a condiment to any Indian meal.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
-
-  // ── Condiments ──
   { id: 31, name: 'Garlic Puree', category: 'Condiments', price: '£1.79', weight: '200g', image: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=400&fit=crop&q=80', description: 'A smooth, ready-to-use garlic puree made from fresh garlic — the perfect time-saving shortcut.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
   { id: 32, name: 'Ginger Puree', category: 'Condiments', price: '£1.79', weight: '200g', image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=400&h=400&fit=crop&q=80', description: 'A fresh ginger puree that delivers authentic ginger flavour without the hassle of peeling and grating.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
   { id: 33, name: 'Garlic & Ginger Puree', category: 'Condiments', price: '£1.79', weight: '200g', image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=400&fit=crop&q=80', description: 'A convenient blend of fresh garlic and ginger puree, combining the two most essential ingredients of Indian cooking.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
   { id: 34, name: 'Classic Mint Sauce', category: 'Condiments', price: '£1.79', weight: '200g', image: 'https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=400&h=400&fit=crop&q=80', description: 'A refreshing mint sauce with a tangy edge, ideal as a condiment for curries, kebabs, and grilled meats.', tags: ['Mild', 'Vegan', 'Gluten-Free'] },
 ];
 
-export const PRODUCT_CATEGORIES = ['All', 'Cooking Sauces', 'Cooking Pastes', 'Pickles', 'Chutneys', 'Condiments'];
+export const PRODUCT_CATEGORIES: string[] = ['All', 'Cooking Sauces', 'Cooking Pastes', 'Pickles', 'Chutneys', 'Condiments'];
 
-export const ALL_RECIPES = [
+export const ALL_RECIPES: Recipe[] = [
   { id: 1, title: 'Hyderabadi Biryani', description: 'Traditionally made using lamb with fragrant basmati rice and Pasco Biryani Paste. A royal dish from the kitchens of the Nizam.', time: '50 mins', servings: 'Serves 4', difficulty: 'Medium', category: 'Main Course', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&h=350&fit=crop&q=80', href: '/recipes/hyderabadi-biryani' },
-  { id: 2, title: 'Methi Chicken', description: 'Enhance the flavour of chicken dishes with aromatic fenugreek and Pasco Tikka Masala Paste.', time: '50 mins', servings: 'Serves 4', difficulty: 'Easy', category: 'Main Course', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&h=350&fit=crop&q=80', href: '/recipes/methi-chicken' },
+  { id: 2, title: 'Methi Chicken', description: 'Enhance the flavour of chicken dishes with aromatic fenugreek and Pasco Tikka Masala.', time: '50 mins', servings: 'Serves 4', difficulty: 'Easy', category: 'Main Course', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&h=350&fit=crop&q=80', href: '/recipes/methi-chicken' },
   { id: 3, title: 'Lamb Bhuna Gosht', description: 'Rich and deeply spiced lamb curry made with Pasco Madras Curry Paste. Best served with naan or rice.', time: '1 hr 20 mins', servings: 'Serves 4', difficulty: 'Medium', category: 'Main Course', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&h=350&fit=crop&q=80', href: '/recipes/lamb-bhuna-gosht' },
   { id: 4, title: 'Tandoori Chicken', description: 'Perfectly marinated chicken cooked in a hot tandoor or oven using our Tandoori Marinade Paste.', time: '45 mins', servings: 'Serves 4', difficulty: 'Easy', category: 'Starters', image: 'https://images.unsplash.com/photo-1610057099443-fde6c99db9e1?w=500&h=350&fit=crop&q=80', href: '/recipes/tandoori-chicken' },
   { id: 5, title: 'Butter Paneer', description: 'A vegetarian twist on the classic butter chicken using Pasco Punjabi Butter Chicken sauce and paneer.', time: '40 mins', servings: 'Serves 4', difficulty: 'Easy', category: 'Vegetarian', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&h=350&fit=crop&q=80', href: '/recipes/butter-paneer' },
@@ -59,9 +50,9 @@ export const ALL_RECIPES = [
   { id: 8, title: 'Vegetable Korma', description: 'A mild, creamy curry packed with seasonal vegetables and Pasco Navratan Korma sauce.', time: '35 mins', servings: 'Serves 4', difficulty: 'Easy', category: 'Vegetarian', image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&h=350&fit=crop&q=80', href: '/recipes/vegetable-korma' },
 ];
 
-export const RECIPE_CATEGORIES = ['All', 'Main Course', 'Starters', 'Vegetarian', 'Seafood'];
+export const RECIPE_CATEGORIES: string[] = ['All', 'Main Course', 'Starters', 'Vegetarian', 'Seafood'];
 
-export const BRANDS = [
+export const BRANDS: Brand[] = [
   { name: 'Pasco', tagline: 'Authentic Indian Since 1990', description: 'Our flagship range of cooking sauces, pastes, pickles, chutneys, and condiments. Trusted by families and professional kitchens across the UK for over 30 years. Every product is made in our Wigan factory using natural ingredients, with no artificial additives or preservatives.', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&h=400&fit=crop&q=80' },
   { name: 'Dhal-icious', tagline: 'Nutritious Plant-Based Meals', description: 'Our range of heat-and-eat meals made with chickpeas, lentils, and black-eyed beans. High in protein and fibre, Dhal-icious meals bring convenient yet wholesome plant-based Indian cuisine to your table. Launched in 2020 as part of our commitment to nutritious, accessible food.', image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=500&h=400&fit=crop&q=80' },
 ];

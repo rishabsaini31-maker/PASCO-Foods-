@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import FadeUp from './FadeUp';
 import { BUNDLES } from '@/lib/constants';
+import { useCart } from '@/context/CartContext';
 
 export default function FeaturedBundles() {
+  const { addToCart } = useCart();
   return (
     <section className="section-spacing bg-white" aria-labelledby="bundles-heading">
       <div className="container-pasco">
@@ -50,10 +52,18 @@ export default function FeaturedBundles() {
                       {bundle.price}
                     </span>
                     <button
-                      onClick={() => { window.dispatchEvent(new CustomEvent('pasco:cart-add')); alert(`${bundle.title} bundle added to cart!`); }}
+                      onClick={() =>
+                        addToCart({
+                          id: `bundle-${bundle.title}`,
+                          name: bundle.title,
+                          category: bundle.subtitle,
+                          price: bundle.price,
+                          image: bundle.image,
+                        })
+                      }
                       className="inline-flex items-center justify-center h-10 px-5 bg-[#214E34] hover:bg-[#1a3f2a] text-white text-xs font-semibold rounded-lg transition-colors tracking-wide"
                     >
-                      Shop Now
+                      Add to Cart
                     </button>
                   </div>
                 </div>
