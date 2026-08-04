@@ -52,7 +52,7 @@ export default function Hero() {
       </div>
 
       <button
-        className="absolute bottom-8 right-8 z-20 w-14 h-14 bg-[#214E34] hover:bg-[#1a3f2a] text-white rounded-full flex items-center justify-center shadow-lg transition-colors"
+        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#214E34] hover:bg-[#1a3f2a] text-white rounded-full flex items-center justify-center shadow-lg transition-colors"
         aria-label="Open chat"
       >
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
