@@ -17,9 +17,9 @@ const FOOTER_LINKS = {
     { label: 'Condiments', href: '/products/condiments' },
   ],
   recipes: [
-    { label: 'Hyderabadi Biryani', href: '/recipes' },
-    { label: 'Methi Chicken', href: '/recipes' },
-    { label: 'Lamb Bhuna Gosht', href: '/recipes' },
+    { label: 'Hyderabadi Biryani', href: '/recipes/hyderabadi-biryani' },
+    { label: 'Methi Chicken', href: '/recipes/methi-chicken' },
+    { label: 'Lamb Bhuna Gosht', href: '/recipes/lamb-bhuna-gosht' },
     { label: 'All Recipes', href: '/recipes' },
   ],
   support: [

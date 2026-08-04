@@ -1,7 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import FadeUp from './FadeUp';
-import { IMAGES } from '@/lib/constants';
 
 export default function Hero() {
   return (
@@ -43,17 +41,17 @@ export default function Hero() {
             </FadeUp>
           </div>
 
-          {/* Right Image */}
+          {/* Right Video */}
           <FadeUp delay={200}>
             <div className="relative img-zoom rounded-xl overflow-hidden">
-              <Image
-                src={IMAGES.hero}
-                alt="Premium Indian spices and ingredients arranged beautifully"
-                width={800}
-                height={900}
+              <video
+                src="/advertising.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-auto object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
+                aria-label="Premium Indian spices and ingredients arranged beautifully"
               />
             </div>
           </FadeUp>

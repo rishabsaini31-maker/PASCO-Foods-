@@ -74,8 +74,8 @@ export default function Header() {
 
       {/* Main Navbar */}
       <header
-        className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-[0_1px_8px_rgba(0,0,0,0.06)]' : 'shadow-none'
+        className={`sticky top-0 z-50 bg-white border-b border-[#E5E2DB] transition-shadow duration-300 ${
+          scrolled ? 'shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : 'shadow-none'
         }`}
         role="navigation"
         aria-label="Main navigation"
