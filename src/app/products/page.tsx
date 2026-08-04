@@ -101,7 +101,7 @@ export default function ProductsPage() {
                       </div>
                       <button
                         onClick={() => handleAddToCart(product)}
-                        className={`h-9 px-4 text-xs font-semibold rounded-lg transition-all ${
+                        className={`h-9 px-3 text-[10px] sm:text-xs font-semibold rounded-lg transition-all ${
                           addedToCart === product.id
                             ? 'bg-[#214E34] text-white'
                             : 'border border-[#E5E2DB] text-[#1A1A1A] hover:border-[#214E34] hover:text-[#214E34]'
