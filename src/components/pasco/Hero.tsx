@@ -1,15 +1,7 @@
-'use client';
-
 import Link from 'next/link';
-import { useState, useRef } from 'react';
 import FadeUp from './FadeUp';
 
 export default function Hero() {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleVideoReady = () => setVideoLoaded(true);
-
   return (
     <section className="section-spacing bg-white" aria-label="Hero">
       <div className="container-pasco">
@@ -51,28 +43,16 @@ export default function Hero() {
 
           {/* Right Video */}
           <FadeUp delay={200} className="lg:col-span-3">
-            <div className="relative img-zoom rounded-xl overflow-hidden bg-[#F8F5EF]">
+            <div className="relative img-zoom rounded-xl overflow-hidden">
               <video
-                ref={videoRef}
                 src="/advertising.mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="auto"
-                onCanPlay={handleVideoReady}
-                onPlaying={handleVideoReady}
-                className={`w-full h-auto object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className="w-full h-auto object-cover"
                 aria-label="Premium Indian spices and ingredients arranged beautifully"
               />
-              {!videoLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center bg-[#F8F5EF]">
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 border-4 border-[#E5E2DB] border-t-[#214E34] rounded-full animate-spin" />
-                    <p className="text-sm text-[#6B6B6B] font-medium">Loading video...</p>
-                  </div>
-                </div>
-              )}
             </div>
           </FadeUp>
         </div>
