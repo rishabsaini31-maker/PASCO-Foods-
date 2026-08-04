@@ -28,3 +28,36 @@ Stage Summary:
 - Image zoom on hover for all cards
 - Zero lint errors, zero console errors
 - Page title: "Pasco Foods — Authentic Indian Flavours Since 1990"
+
+---
+Task ID: 2
+Agent: Super Z (Main)
+Task: Build Products, Recipes, Foodservice, Our Story, Our Brands, Contact, Login, Signup pages
+
+Work Log:
+- Created shared PageLayout component with breadcrumbs, Header, and Footer
+- Extended data layer with data.ts: 19 products, 8 recipes, 2 brands, filter categories
+- Built Products page with sticky category filter tabs, 19-product grid, Add to Cart buttons with "Added" feedback
+- Built Recipes page with category filter tabs (All/Main Course/Starters/Vegetarian/Seafood), 8 recipe cards
+- Built Foodservice page with hero, 4 benefit blocks, download catalogue button (alert), CTA section
+- Built Our Story page with extended 8-entry timeline, values section, CTA
+- Built Our Brands page with alternating brand cards for Pasco and Dhal-icious
+- Built Contact page with contact info sidebar, interactive form with validation and success state
+- Built Login page with email/password, show/hide password toggle, remember me, forgot password, form validation
+- Built Signup page with first/last name, email, password with confirmation, terms checkbox, validation
+- Updated Header: added Login icon link (desktop), Sign In/Create Account buttons (mobile menu)
+- Implemented cart event system: Add to Cart dispatches CustomEvent, Header listens and updates badge count
+- Fixed Foodservice page missing 'use client' directive
+- All 8 pages verified via Agent Browser
+
+Stage Summary:
+- 8 new pages built, all with breadcrumbs, consistent design system, fade-up animations
+- Products page: interactive category filters, Add to Cart with visual feedback, live cart badge in header
+- Recipes page: category filters, recipe metadata (time/servings/difficulty)
+- Contact page: form with validation, loading state, success confirmation, "Send Another" reset
+- Login: redirects to homepage on submit, show/hide password, "Forgot password" alert
+- Signup: validates password match, redirects to login on submit, terms checkbox required
+- Foodservice: "Download Catalogue" shows alert, all navigation links work
+- Cart badge in header updates live when products are added
+- Zero lint errors, all pages return 200
+- All buttons are interactive: filters, cart, form submits, navigation, alerts, toggles

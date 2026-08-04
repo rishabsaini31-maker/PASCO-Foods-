@@ -8,6 +8,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -23,6 +24,13 @@ export default function Header() {
     }
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  // Listen for cart updates
+  useEffect(() => {
+    const handler = () => setCartCount(c => c + 1);
+    window.addEventListener('pasco:cart-add', handler);
+    return () => window.removeEventListener('pasco:cart-add', handler);
+  }, []);
 
   return (
     <>
@@ -98,7 +106,7 @@ export default function Header() {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {/* Search */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
@@ -110,17 +118,31 @@ export default function Header() {
               </svg>
             </button>
 
+            {/* Login */}
+            <Link
+              href="/login"
+              className="hidden md:flex w-10 h-10 items-center justify-center text-[#1A1A1A] hover:text-[#214E34] transition-colors"
+              aria-label="Sign in"
+            >
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </Link>
+
             {/* Cart */}
             <button
+              onClick={() => alert(`You have ${cartCount} item${cartCount !== 1 ? 's' : ''} in your cart.`)}
               className="relative w-10 h-10 flex items-center justify-center text-[#1A1A1A] hover:text-[#214E34] transition-colors"
               aria-label="Shopping cart"
             >
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
               </svg>
-              <span className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 bg-[#9C3A28] text-white text-[10px] font-semibold rounded-full flex items-center justify-center">
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 bg-[#9C3A28] text-white text-[10px] font-semibold rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
             </button>
 
             {/* Mobile Menu Button */}
@@ -143,7 +165,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Search Bar (collapsible) */}
+        {/* Search Bar */}
         {searchOpen && (
           <div className="border-t border-[#E5E2DB]">
             <div className="container-pasco py-3">
@@ -179,13 +201,20 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8">
+              <div className="mt-6 space-y-3">
                 <Link
-                  href="/products"
+                  href="/login"
+                  className="block w-full text-center border-2 border-[#214E34] text-[#214E34] font-semibold py-3 rounded-lg transition-colors text-sm hover:bg-[#214E34] hover:text-white"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
                   className="block w-full text-center bg-[#214E34] hover:bg-[#1a3f2a] text-white font-semibold py-3 rounded-lg transition-colors text-sm"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Shop Now
+                  Create Account
                 </Link>
               </div>
               <div className="mt-6 space-y-3 text-sm text-[#6B6B6B]">
