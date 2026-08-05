@@ -268,7 +268,42 @@ export const NEWS: NewsItem[] = [
   },
 ];
 
-// ─── Recipes ────────────────────────────────────────────────────
+// ─── Q&A ────────────────────────────────────────────────
+
+export const QNA_ITEMS = [
+  {
+    question: 'Are your products suitable for vegetarians and vegans?',
+    answer: 'Yes, the majority of our products are vegetarian and vegan-friendly. We clearly label each product with dietary information on the packaging. Our cooking sauces, pastes, pickles, chutneys, and condiments are all free from animal-derived ingredients.',
+  },
+  {
+    question: 'Do you ship internationally?',
+    answer: 'Currently, we ship within the UK only. Free UK delivery is available on orders over £15. We are working on expanding our international shipping in the future — stay tuned for updates.',
+  },
+  {
+    question: 'How long do your products last?',
+    answer: 'Our products have a shelf life of 12 months from the date of manufacture when stored in a cool, dry place. Each jar is printed with a best-before date for your convenience.',
+  },
+  {
+    question: 'Are your products free from artificial additives?',
+    answer: 'Absolutely. All Pasco products are made with 100% natural ingredients and are free from artificial preservatives, additives, and colourings. We believe in honest, clean labelling so you know exactly what is in every jar.',
+  },
+  {
+    question: 'Can I return a product if I am not satisfied?',
+    answer: 'We want you to love every product you buy. If you are not completely satisfied, please contact our customer service team within 30 days of purchase and we will be happy to arrange a replacement or refund.',
+  },
+  {
+    question: 'Do you offer foodservice or wholesale options?',
+    answer: 'Yes, we supply our products to restaurants, cafés, and food businesses across the UK. Our foodservice team can create tailored solutions for your business. Get in touch via our contact page or call us on 01942 493220.',
+  },
+  {
+    question: 'Where are your products manufactured?',
+    answer: 'All Pasco products are made in our factory in Wigan, Lancashire, UK. We grow our own spices on farm plantations in India and partner directly with farmers to ensure the finest quality ingredients.',
+  },
+  {
+    question: 'How can I place a bulk order?',
+    answer: 'For bulk or wholesale orders, please email us at sales@pascofoods.com or call 01942 493220. Our team will be happy to discuss your requirements and provide a quote.',
+  },
+];
 
 export const RECIPES: DetailedRecipe[] = [
   {

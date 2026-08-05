@@ -7,6 +7,7 @@ import FeaturedBundles from '@/components/pasco/FeaturedBundles';
 import PascoStory from '@/components/pasco/PascoStory';
 import WhyChoosePasco from '@/components/pasco/WhyChoosePasco';
 import Recipes from '@/components/pasco/Recipes';
+import QnaSection from '@/components/pasco/QnaSection';
 import Testimonials from '@/components/pasco/Testimonials';
 import News from '@/components/pasco/News';
 import Newsletter from '@/components/pasco/Newsletter';
@@ -25,6 +26,7 @@ export default function Home() {
         <PascoStory />
         <WhyChoosePasco />
         <Recipes />
+        <QnaSection />
         <Testimonials />
         <News />
         <Newsletter />
